@@ -26,7 +26,7 @@ describe 'Artist' do
 
   describe '#save' do
     it 'adds the artist instance to the @@all class variable' do
-      artist.save
+      expect(artist.save).to eq(artist)
       expect(Artist.all).to include(artist)
     end
   end
@@ -40,7 +40,7 @@ describe 'Artist' do
 
     it 'Creates new instance of Artist if none exist' do
       artist_1 = Artist.find_or_create_by_name("Drake")
-      expect(artist_1.class).to eq(Artist)
+      expect(artist_1).to be_instance_of(Artist)
     end
   end
 
